@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My GitHub PWA</title>
+
+    <!-- Tema Rengi ve Manifest Dosyası -->
+    <meta name="theme-color" content="#000000">
+    <link rel="manifest" href="/manifest.json">
+
+    <!-- Favicon -->
+    <link rel="icon" href="/assets/icons/icon-192x192.png" type="image/png">
+    
+    <!-- Stylesheet -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1>Welcome to My PWA</h1>
+        <p>This is a simple Progressive Web App hosted on GitHub Pages.</p>
+    </header>
+
+    <main>
+        <p>Your content goes here. This is the main area of your PWA.</p>
+        <button id="installButton" style="display: none;">Install App</button>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 My GitHub PWA</p>
+    </footer>
+
+    <!-- App JavaScript -->
+    <script src="app.js"></script>
+
+    <!-- Service Worker Registration -->
+    <script>
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('/service-worker.js')
+                    .then(registration => {
+                        console.log('Service Worker registered with scope:', registration.scope);
+                    })
+                    .catch(error => {
+                        console.log('Service Worker registration failed:', error);
+                    });
+            });
+        }
+    </script>
+</body>
+</html>
